@@ -520,7 +520,7 @@ EOD;
 
 		$url = get_interwiki_url($name, $this->param);
 		$this->url = ($url === FALSE) ?
-			$script . '?' . pagename_urlencode('[[' . $name . ':' . $this->param . ']]') :
+			pkwk_uri(NULL, pagename_urlencode('[[' . $name . ':' . $this->param . ']]')) :
 			htmlsc($url);
 
 		return parent::setParam(
