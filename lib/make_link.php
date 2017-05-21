@@ -705,7 +705,7 @@ class Link_autolink_a extends Link_autolink
 // Make hyperlink for the page
 function make_pagelink($page, $alias = '', $anchor = '', $refer = '', $isautolink = FALSE)
 {
-	global $script, $vars, $link_compact, $related, $_symbol_noexists;
+	global $vars, $link_compact, $related, $_symbol_noexists;
 
 	$s_page = htmlsc(strip_bracket($page));
 	$s_alias = ($alias == '') ? $s_page : $alias;
