@@ -510,8 +510,6 @@ EOD;
 
 	function set($arr, $page)
 	{
-		global $script;
-
 		list(, $alias, , $name, $this->param) = $this->splice($arr);
 
 		$matches = array();
