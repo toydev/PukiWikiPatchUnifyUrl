@@ -209,7 +209,7 @@ function get_search_words($words = array(), $do_escape = FALSE)
 // 'Search' main function
 function do_search($word, $type = 'AND', $non_format = FALSE, $base = '')
 {
-	global $script, $whatsnew, $non_list, $search_non_list;
+	global $whatsnew, $non_list, $search_non_list;
 	global $_msg_andresult, $_msg_orresult, $_msg_notfoundresult;
 	global $search_auth, $show_passage;
 
@@ -342,7 +342,7 @@ function strip_bracket($str)
 // Create list of pages
 function page_list($pages, $cmd = 'read', $withfilename = FALSE)
 {
-	global $script, $list_index;
+	global $list_index;
 	global $_msg_symbol, $_msg_other;
 	global $pagereading_enable;
 

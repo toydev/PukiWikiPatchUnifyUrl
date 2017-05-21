@@ -348,7 +348,7 @@ EOD;
 // Related pages
 function make_related($page, $tag = '')
 {
-	global $script, $vars, $rule_related_str, $related_str;
+	global $vars, $rule_related_str, $related_str;
 	global $_ul_left_margin, $_ul_margin, $_list_pad_str;
 
 	$links = links_get_related($page);
@@ -436,8 +436,6 @@ function strip_autolink($str)
 // Make a backlink. searching-link of the page name, by the page name, for the page name
 function make_search($page)
 {
-	global $script;
-
 	$s_page = htmlsc($page);
 	$r_page = rawurlencode($page);
 
