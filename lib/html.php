@@ -338,7 +338,7 @@ EOD;
 		$body .= $hr . catrule();
 	} else {
 		$body .= '<ul><li><a href="' .
-			$script . '?cmd=edit&amp;help=true&amp;page=' . $r_page .
+			pkwk_uri(array("cmd" => "edit", "help" => "true", "page" => $r_page)) .
 			'">' . $_msg_help . '</a></li></ul>';
 	}
 
