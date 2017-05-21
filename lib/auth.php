@@ -170,8 +170,8 @@ function check_editable($page, $auth_flag = TRUE, $exit_flag = TRUE)
 			$body = $title = str_replace('$1',
 				htmlsc(strip_bracket($page)), $_title_cannotedit);
 			if (is_freeze($page))
-				$body .= '(<a href="' . $script . '?cmd=unfreeze&amp;page=' .
-					rawurlencode($page) . '">' . $_msg_unfreeze . '</a>)';
+				$body .= '(<a href="' . pkwk_uri(array("cmd" => "unfreeze", "page" => rawurlencode($page))) .
+					'">' . $_msg_unfreeze . '</a>)';
 			$page = str_replace('$1', make_search($page), $_title_cannotedit);
 			catbody($title, $page, $body);
 			exit;
