@@ -51,42 +51,42 @@ function catbody($title, $page, $body)
 	// Canonical URL
 	$canonical_url = $script;
 	if ($_page !== $defaultpage) {
-		$canonical_url = $script . '?' . $r_page;
+		$canonical_url = pkwk_uri(NULL, $r_page);
 	}
 
 	// Set $_LINK for skin
-	$_LINK['add']      = "$script?cmd=add&amp;page=$r_page";
-	$_LINK['backup']   = "$script?cmd=backup&amp;page=$r_page";
-	$_LINK['copy']     = "$script?plugin=template&amp;refer=$r_page";
-	$_LINK['diff']     = "$script?cmd=diff&amp;page=$r_page";
-	$_LINK['edit']     = "$script?cmd=edit&amp;page=$r_page";
-	$_LINK['filelist'] = "$script?cmd=filelist";
-	$_LINK['freeze']   = "$script?cmd=freeze&amp;page=$r_page";
-	$_LINK['help']     = "$script?" . pagename_urlencode($help_page);
-	$_LINK['list']     = "$script?cmd=list";
-	$_LINK['new']      = "$script?plugin=newpage&amp;refer=$r_page";
-	$_LINK['rdf']      = "$script?cmd=rss&amp;ver=1.0";
-	$_LINK['recent']   = "$script?" . pagename_urlencode($whatsnew);
+	$_LINK['add']      = pkwk_uri(array("cmd" => "add", "page" => $r_page));
+	$_LINK['backup']   = pkwk_uri(array("cmd" => "backup", "page" => $r_page));
+	$_LINK['copy']     = pkwk_uri(array("plugin" => "template", "refer" => $r_page));
+	$_LINK['diff']     = pkwk_uri(array("cmd" => "diff", "page" => $r_page));
+	$_LINK['edit']     = pkwk_uri(array("cmd" => "edit", "page" => $r_page));
+	$_LINK['filelist'] = pkwk_uri(array("cmd" => "filelist"));
+	$_LINK['freeze']   = pkwk_uri(array("cmd" => "freeze", "page" => $r_page));
+	$_LINK['help']     = pkwk_uri(NULL, pagename_urlencode($help_page));
+	$_LINK['list']     = pkwk_uri(array("cmd" => "list"));
+	$_LINK['new']      = pkwk_uri(array("plugin" => "newpage", "refer" => $r_page));
+	$_LINK['rdf']      = pkwk_uri(array("cmd" => "rss", "ver" => "1.0"));
+	$_LINK['recent']   = pkwk_uri(NULL, pagename_urlencode($whatsnew));
 	$_LINK['reload']   = $canonical_url;
-	$_LINK['rename']   = "$script?plugin=rename&amp;refer=$r_page";
-	$_LINK['rss']      = "$script?cmd=rss";
-	$_LINK['rss10']    = "$script?cmd=rss&amp;ver=1.0"; // Same as 'rdf'
-	$_LINK['rss20']    = "$script?cmd=rss&amp;ver=2.0";
-	$_LINK['search']   = "$script?cmd=search";
-	$_LINK['top']      = "$script?" . pagename_urlencode($defaultpage);
-	$_LINK['unfreeze'] = "$script?cmd=unfreeze&amp;page=$r_page";
-	$_LINK['upload']   = "$script?plugin=attach&amp;pcmd=upload&amp;page=$r_page";
+	$_LINK['rename']   = pkwk_uri(array("plugin" => "rename", "refer" => $r_page));
+	$_LINK['rss']      = pkwk_uri(array("cmd" => "rss"));
+	$_LINK['rss10']    = pkwk_uri(array("cmd" => "rss", "ver" => "1.0")); // Same as 'rdf'
+	$_LINK['rss20']    = pkwk_uri(array("cmd" => "rss", "ver" => "2.0"));
+	$_LINK['search']   = pkwk_uri(array("cmd" => "search"));
+	$_LINK['top']      = pkwk_uri(NULL, pagename_urlencode($defaultpage));
+	$_LINK['unfreeze'] = pkwk_uri(array("cmd" => "unfreeze", "page" => $r_page));
+	$_LINK['upload']   = pkwk_uri(array("plugin" => "attach", "pcmd" => "upload", "page" => $r_page));
 	$login_link = "#LOGIN_ERROR"; // dummy link that is not used
 	switch ($auth_type) {
 		case AUTH_TYPE_FORM:
-			$login_link = "$script?plugin=loginform&pcmd=login&page=$r_page";
+			$login_link = pkwk_uri(array("plugin" => "loginform", "pcmd" => "login", "page" => $r_page));
 			break;
 		case AUTH_TYPE_EXTERNAL:
 			$login_link = get_auth_external_login_url($_page, $_LINK['reload']);
 			break;
 	}
-	$_LINK['login']    = htmlsc($login_link);
-	$_LINK['logout']   = "$script?plugin=loginform&amp;pcmd=logout&amp;page=$r_page";
+	$_LINK['login']    = $login_link;
+	$_LINK['logout']   = pkwk_uri(array("plugin" => "loginform", "pcmd" => "logout", "page" => $r_page));
 
 	// Compat: Skins for 1.4.4 and before
 	$link_add       = & $_LINK['add'];
