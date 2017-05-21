@@ -274,8 +274,9 @@ function do_search($word, $type = 'AND', $non_format = FALSE, $base = '')
 		$r_page  = rawurlencode($page);
 		$s_page  = htmlsc($page);
 		$passage = $show_passage ? ' ' . get_passage(get_filetime($page)) : '';
-		$retval .= ' <li><a href="' . $script . '?cmd=read&amp;page=' .
-			$r_page . '&amp;word=' . $r_word . '">' . $s_page .
+		$retval .= ' <li><a href="' .
+			pkwk_uri(array("cmd" => "read", "page" => $r_page, "word" => $r_word)) .
+			'">' . $s_page .
 			'</a>' . $passage . '</li>' . "\n";
 	}
 	$retval .= '</ul>' . "\n";
