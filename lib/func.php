@@ -659,6 +659,31 @@ function get_script_uri($init_uri = '')
 	return $script;
 }
 
+// Get abosolute-URI with params and path
+function pkwk_uri($params, $path = null)
+{
+	$result = get_script_uri();
+	$separator = '&amp;';
+
+	if (isset($params['page'])) {
+		$params['page'] = pagename_urlencode($params['page']);
+	}
+
+	if (isset($path)) {
+		if (isset($params) && 0 < count($params)) {
+			return get_script_uri() . '?' . pagename_urlencode($path) . $separator . build_query($params, $separator);
+		} else {
+			return get_script_uri() . '?' . pagename_urlencode($path);
+		}
+	} else {
+		if (isset($params) && 0 < count($params)) {
+			return get_script_uri() . '?' . build_query($params, $separator);
+		} else {
+			return get_script_uri();
+		}
+	}
+}
+
 // Remove null(\0) bytes from variables
 //
 // NOTE: PHP had vulnerabilities that opens "hoge.php" via fopen("hoge.php\0.txt") etc.
