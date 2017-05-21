@@ -441,7 +441,7 @@ function make_search($page)
 	$s_page = htmlsc($page);
 	$r_page = rawurlencode($page);
 
-	return '<a href="' . $script . '?plugin=related&amp;page=' . $r_page .
+	return '<a href="' . pkwk_uri(array("plugin" => "related", "page" => $r_page)) .
 		'">' . $s_page . '</a> ';
 }
 
