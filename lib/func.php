@@ -665,15 +665,11 @@ function pkwk_uri($params, $path = null)
 	$result = get_script_uri();
 	$separator = '&amp;';
 
-	if (isset($params['page'])) {
-		$params['page'] = pagename_urlencode($params['page']);
-	}
-
 	if (isset($path)) {
 		if (isset($params) && 0 < count($params)) {
-			return get_script_uri() . '?' . pagename_urlencode($path) . $separator . build_query($params, $separator);
+			return get_script_uri() . '?' . $path . $separator . build_query($params, $separator);
 		} else {
-			return get_script_uri() . '?' . pagename_urlencode($path);
+			return get_script_uri() . '?' . $path;
 		}
 	} else {
 		if (isset($params) && 0 < count($params)) {
@@ -682,6 +678,23 @@ function pkwk_uri($params, $path = null)
 			return get_script_uri();
 		}
 	}
+}
+
+function build_query($params, $separator) {
+    $result = '';
+
+    $i = 0;
+    foreach ($params as $key => $value) {
+        if (0 < $i) {
+            $result .= $separator;
+        }
+
+		$result .= $key . "=" . $value;
+
+        ++$i;
+    }
+
+    return $result;
 }
 
 // Remove null(\0) bytes from variables
