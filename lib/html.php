@@ -367,9 +367,9 @@ function make_related($page, $tag = '')
 		$s_page   = htmlsc($page);
 		$passage  = get_passage($lastmod);
 		$_links[] = $tag ?
-			'<a href="' . $script . '?' . $r_page . '" title="' .
+			'<a href="' . pkwk_uri(NULL, $r_page) . '" title="' .
 			$s_page . ' ' . $passage . '">' . $s_page . '</a>' :
-			'<a href="' . $script . '?' . $r_page . '">' .
+			'<a href="' . pkwk_uri(NULL, $r_page) . '">' .
 			$s_page . '</a>' . $passage;
 	}
 	if (empty($_links)) return ''; // Nothing
