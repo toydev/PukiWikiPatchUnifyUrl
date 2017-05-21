@@ -156,7 +156,7 @@ function pkwk_ldap_escape_dn($value) {
 // Check edit-permission
 function check_editable($page, $auth_flag = TRUE, $exit_flag = TRUE)
 {
-	global $script, $_title_cannotedit, $_msg_unfreeze;
+	global $_title_cannotedit, $_msg_unfreeze;
 
 	if (edit_auth($page, $auth_flag, $exit_flag) && is_editable($page)) {
 		// Editable
