@@ -734,14 +734,14 @@ function make_pagelink($page, $alias = '', $anchor = '', $refer = '', $isautolin
 			$al_left = $al_right = '';
 		}
 
-		return $al_left . '<a ' . 'href="' . $script . '?' . $r_page . $anchor .
+		return $al_left . '<a ' . 'href="' . pkwk_uri(NULL, $r_page . $anchor) .
 			'"' . $title . '>' . $s_alias . '</a>' . $al_right;
 	} else {
 		// Dangling link
 		if (PKWK_READONLY) return $s_alias; // No dacorations
 
 		$retval = $s_alias . '<a href="' .
-			$script . '?cmd=edit&amp;page=' . $r_page . $r_refer . '">' .
+			pkwk_uri(array("cmd" => "edit", "page" => $r_page . $r_refer)) . '">' .
 			$_symbol_noexists . '</a>';
 
 		if ($link_compact) {
